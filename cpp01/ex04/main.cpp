@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 17:31:55 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/06 19:08:58 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:52:54 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@
 
 void	replace(std::string av[3])
 {
-	std::string	output_file;
+	std::stringstream  	buffer;
+    std::ifstream       file(av[0].c_str());
+	std::ofstream 		file_replace(av[0] + ".replace");
+    std::string         content;
+	size_t				pos = 0;
 
-	output_file = av[0];
-	output_file += ".replace";
-	std::cout << output_file << std::endl;
+    buffer << file.rdbuf();
+    content = buffer.str();
+	while ((pos = content.find(av[1], pos)) != std::string::npos) {
+		content.replace(pos, av[1].length(), av[2]);
+		pos += av[2].length();
+	}
+	file.close();
+	file_replace << content;
 }
 
 int	check_args(int argc, std::string *av)

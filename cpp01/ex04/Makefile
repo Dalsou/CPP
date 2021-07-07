@@ -6,7 +6,7 @@
 #    By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 17:24:05 by afoulqui          #+#    #+#              #
-#    Updated: 2021/07/06 17:26:06 by afoulqui         ###   ########.fr        #
+#    Updated: 2021/07/07 15:11:51 by afoulqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ clean:
 
 fclean:		clean
 			@$(RM) $(NAME)
+			@$(RM) tests/*.replace
 			@echo "\033[36;1m $(NAME) ------>>  fclean\033[0m\n"
 
 re:			fclean all
