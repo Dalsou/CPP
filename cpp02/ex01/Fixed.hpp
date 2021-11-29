@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 14:21:51 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/08 14:43:16 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:12:25 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@ class Fixed
 		static const int bits_frac = 8;
 	
 	public:
-		Fixed( void );
-		Fixed( const int i);
-		Fixed( const float f);
+		// Constructors & Destructor
+		Fixed(void);
+		~Fixed(void);
+		Fixed(const int i);
+		Fixed(const float f);
 		Fixed(const Fixed& src);
+		// Operator
 		Fixed& operator=(const Fixed& src);
-		int	getRawBits( void ) const;
+		//Functions
+		int	getRawBits(void) const;
 		void setRawBits(int const raw);
-		float toFloat( void ) const;
-		int toInt( void ) const;
-		~Fixed( void );
+		float toFloat(void) const;
+		int toInt(void) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& src);
