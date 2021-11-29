@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 17:22:35 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/07 17:42:26 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/29 10:49:37 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ class Fixed
 		static const int bits_frac = 8;
 	
 	public:
-		Fixed( void );
+		// Constructors & Destructor
+		Fixed(void);
+		~Fixed(void);
 		Fixed(const Fixed& f);
+		//Operator
 		Fixed& operator=(const Fixed& f);
-		int	getRawBits( void ) const;
+		//Functions
+		int	getRawBits(void) const;
 		void setRawBits(int const raw);
-		~Fixed( void );
 };
 
 # endif
