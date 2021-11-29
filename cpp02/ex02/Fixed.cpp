@@ -6,14 +6,19 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 14:46:38 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/08 15:56:35 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:05:03 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+// constructor & destructor
+
 Fixed::Fixed(void) {
 	this->n = 0;
+}
+
+Fixed::~Fixed(void) {
 }
 
 Fixed::Fixed(const int i) {
@@ -28,10 +33,16 @@ Fixed::Fixed(const Fixed& src) {
 	*this = src;
 }
 
+// Operators
+
 Fixed &Fixed::operator=(const Fixed& src) {
 	if (this != &src)
 		this->n = src.getRawBits();
 	return (*this);
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& src) {
+	return (os << src.toFloat());
 }
 
 bool Fixed::operator<(const Fixed& src) const {
@@ -116,6 +127,8 @@ Fixed Fixed::operator--(int) {
 	return (ret);
 }
 
+// Function
+
 int Fixed::getRawBits() const {
 	return (this->n);
 }
@@ -132,12 +145,7 @@ int Fixed::toInt(void) const {
 	return ((int)(this->n) >> bits_frac);
 }
 
-Fixed::~Fixed(void) {
-}
-
-std::ostream& operator<<(std::ostream& os, const Fixed& src) {
-	return (os << src.toFloat());
-}
+// static
 
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b) {
 	
@@ -153,14 +161,6 @@ Fixed& Fixed::min(Fixed& a, Fixed& b) {
 	return (a);
 }
 
-const Fixed& min(const Fixed& a, const Fixed& b) {
-	return (Fixed::min(a, b));
-}
-
-Fixed& min(Fixed& a, Fixed& b) {
-	return (Fixed::min(a, b));
-}
-
 const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
 	
 	if (a > b)
@@ -173,12 +173,4 @@ Fixed& Fixed::max(Fixed& a, Fixed& b) {
 	if (a > b)
 		return (a);
 	return (b);
-}
-
-const Fixed& max(const Fixed& a, const Fixed& b) {
-	return (Fixed::max(a, b));
-}
-
-Fixed& max(Fixed& a, Fixed& b) {
-	return (Fixed::max(a, b));
 }
