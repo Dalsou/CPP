@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 11:08:49 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/08/12 12:13:11 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:25:25 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 ClapTrap::ClapTrap(void) {
 	std::cout << "ClapTrap default constructor called\n";
+	this->name = "Unknow";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
@@ -52,6 +53,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& op) {
 // Setter & Getter Functions
 
 void ClapTrap::setName(std::string newName) {
+	this->name.erase();
 	this->name = newName;
 }
 
