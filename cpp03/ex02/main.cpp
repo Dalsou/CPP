@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:18:45 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/08/12 18:25:50 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:40:32 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int main() {
 	ScavTrap	luis("Luis");
 	FragTrap	anna("Anna");
 
+	std::cout << std::endl;
+
 	nico.attack("Adam");
 	nico.takeDamage(3);
 	luis.attack("Adam");
@@ -31,5 +33,8 @@ int main() {
 	anna.beRepaired(5);
 	luis.guardGate();
 	anna.highFivesGuys();
+
+	std::cout << std::endl;
+
 	return (0);
 }
