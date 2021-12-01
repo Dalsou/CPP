@@ -18,7 +18,7 @@ OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 CC		=	clang++
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ----------------- #
 #     FUNCTIONS     #
@@ -26,7 +26,7 @@ FLAGS	=	-Wall -Wextra -Werror
 
 $(OBJ_DIR)%.o: %.cpp
 				@mkdir -p $(OBJ_DIR)
-				@$(CC) $(FLAGS) -o $@ -c $<
+				$(CC) $(FLAGS) -o $@ -c $<
 
 $(NAME):	$(OBJS)
 				@$(CC) $(FLAGS) $(OBJS) -o $(NAME)		

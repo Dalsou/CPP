@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:42:09 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/07 16:42:12 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:35:38 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 # define KAREN_HPP
 
 #include <iostream>
+#include <string>
 
 class	Karen {
-
-	public:
-		Karen( void );
-		void	complain(std::string level);
-		~Karen( void );
 
 	private:
 		void	debug( void );
 		void	info( void );
 		void	warning( void );
 		void	error( void );
+
+	public:
+		Karen( void );
+		~Karen( void );
+		void	complain(std::string level);
 };
 
 # endif

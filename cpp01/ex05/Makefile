@@ -6,7 +6,7 @@
 #    By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/07 15:55:35 by afoulqui          #+#    #+#              #
-#    Updated: 2021/07/07 15:56:24 by afoulqui         ###   ########.fr        #
+#    Updated: 2021/12/01 14:01:39 by afoulqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #     VARIABLES     #
 # ----------------- #
 
-NAME	=	a.out
+NAME	=	karen
 
 SRCS	=	main.cpp \
 			Karen.cpp \
@@ -28,7 +28,7 @@ OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 CC		=	clang++
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ----------------- #
 #     FUNCTIONS     #
@@ -36,7 +36,7 @@ FLAGS	=	-Wall -Wextra -Werror
 
 $(OBJ_DIR)%.o: %.cpp
 				@mkdir -p $(OBJ_DIR)
-				@$(CC) $(FLAGS) -o $@ -c $<
+				$(CC) $(FLAGS) -o $@ -c $<
 
 $(NAME):	$(OBJS)
 				@$(CC) $(FLAGS) $(OBJS) -o $(NAME)		

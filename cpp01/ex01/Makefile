@@ -6,7 +6,7 @@
 #    By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 18:05:29 by afoulqui          #+#    #+#              #
-#    Updated: 2021/07/01 18:05:57 by afoulqui         ###   ########.fr        #
+#    Updated: 2021/12/01 14:03:40 by afoulqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,8 @@ SRCS	=	main.cpp \
 			Zombie.cpp \
 			ZombieHorde.cpp
 
-INC		=	Zombie.hpp
-
-OBJS	=	$(SRCS:.cpp=.o)
+OBJ_DIR	=	objs/
+OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 # ----------------- #
 #    COMPILATION    #
@@ -30,13 +29,17 @@ OBJS	=	$(SRCS:.cpp=.o)
 
 CC		=	clang++
 
-FLAGS	=	-Wall -Wextra -Werror -std=c++98 -I$(INC)
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ----------------- #
 #     FUNCTIONS     #
 # ----------------- #
 
 all:		$(NAME)
+
+$(OBJ_DIR)%.o: %.cpp
+				@mkdir -p $(OBJ_DIR)
+				$(CC) $(FLAGS) -o $@ -c $<
 
 $(NAME):	$(OBJS)
 				@$(CC) $(FLAGS) $(OBJS) -o $(NAME)		
@@ -51,7 +54,7 @@ $(NAME):	$(OBJS)
 RM		=	rm -rf
 
 clean:	
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJ_DIR)
 			@echo "\033[36;1m $(NAME) ------>>  clean\033[0m\n"
 
 fclean:		clean

@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:50:17 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/06 17:19:41 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:04:38 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 class Weapon {
 
-	public:
-		Weapon( void );
-		Weapon(std::string first_type);
-		const std::string& getType( void );
-		void setType(std::string new_type);
-		~Weapon( void );
-
 	private:
-		std::string type;
+		std::string _type;
+
+	public:
+		Weapon(void);
+		Weapon(std::string type);
+		~Weapon(void);
+		const std::string& getType(void);
+		void setType(std::string type);
 };
 
 #endif

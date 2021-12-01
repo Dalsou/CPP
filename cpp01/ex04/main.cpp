@@ -6,62 +6,70 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 17:31:55 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/07 15:52:54 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:55:14 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-# include <sys/stat.h>
-# include <fstream>
-# include <sstream>
+# include <iostream>
 # include <string>
+# include <fstream>
 
-void	replace(std::string av[3])
+std::string	replace(std::string content, const std::string &s1, const std::string &s2)
 {
-	std::stringstream  	buffer;
-    std::ifstream       file(av[0].c_str());
-	std::ofstream 		file_replace(av[0] + ".replace");
-    std::string         content;
-	size_t				pos = 0;
+	const size_t	size = s1.size();
+	size_t			pos = 0;
 
-    buffer << file.rdbuf();
-    content = buffer.str();
-	while ((pos = content.find(av[1], pos)) != std::string::npos) {
-		content.replace(pos, av[1].length(), av[2]);
-		pos += av[2].length();
+	while ((pos = content.find(s1)) != std::string::npos)
+	{
+		content.erase(pos, size);
+		content.insert(pos, s2);
 	}
-	file.close();
-	file_replace << content;
+	return (content);
 }
 
-int	check_args(int argc, std::string *av)
+int	check_args(std::string filename, std::string s1, std::string s2)
 {
-	int	ret = 1;
-	struct stat buffer;
+    std::ifstream       file_in(filename.c_str());
+    std::string         content("");
 
-	if (argc != 4)
-		std::cout << "Wrong number of arguments.\n";
-	else if (!av[0].length() || !av[1].length() || !av[2].length())
+	if (!s1.size() || !s2.size())
+	{
 		std::cout << "One argument is empty.\n";
-	else if (stat(av[2].c_str(), &buffer) == 0)
-		std::cout << "File doesn't exist.\n";
-	else
-		ret = 0;	
-	return (ret);
+		return (1);
+	}
+	if (!file_in.is_open())
+	{
+		std::cout << "File in doesn't exist\n";
+		return (1);
+	}
+	std::ofstream 		file_out((filename + ".replace").c_str());
+	if (!file_out.is_open())
+	{
+		std::cout << "File out doesn't exist\n";
+		file_in.close();
+		return (1);
+	}
+	if (s1 != s2)
+	{
+		while (std::getline(file_in, content))
+			file_out << replace(content, s1, s2) << std::endl;
+	}
+	file_in.close();
+	file_out.close();
+	return (0);
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	std::string av[3];
 	int ret;
 
-	(void)argc;
-	for (int i = 1; i < 4; i++)
-		av[i - 1].append(argv[i]);
-	ret = check_args(argc, av);
-	if (!ret)
-		replace(av);
-	for (int i = 0; i < 3; i++)
-		av[i].clear();
-	return (ret);
+	if (ac != 4)
+	{
+		std::cout << "Wrong number of arguments.\n";
+		return (1);
+	}
+	ret = check_args(av[1], av[2], av[3]);
+	if (ret)
+		return (1);
+	return (0);
 }

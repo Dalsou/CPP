@@ -6,7 +6,7 @@
 #    By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 10:29:03 by afoulqui          #+#    #+#              #
-#    Updated: 2021/07/06 10:31:25 by afoulqui         ###   ########.fr        #
+#    Updated: 2021/12/01 14:05:12 by afoulqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ NAME	=	a.out
 
 SRCS	=	main.cpp
 
-OBJS	=	$(SRCS:.cpp=.o)
+OBJ_DIR	=	objs/
+OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 # ----------------- #
 #    COMPILATION    #
@@ -26,13 +27,18 @@ OBJS	=	$(SRCS:.cpp=.o)
 
 CC		=	clang++
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ----------------- #
 #     FUNCTIONS     #
 # ----------------- #
 
 all:		$(NAME)
+
+$(OBJ_DIR)%.o: %.cpp
+				@
+				mkdir -p $(OBJ_DIR)
+				$(CC) $(FLAGS) -o $@ -c $<
 
 $(NAME):	$(OBJS)
 				@$(CC) $(FLAGS) $(OBJS) -o $(NAME)		
@@ -47,7 +53,7 @@ $(NAME):	$(OBJS)
 RM		=	rm -rf
 
 clean:	
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJ_DIR)
 			@echo "\033[36;1m $(NAME) ------>>  clean\033[0m\n"
 
 fclean:		clean

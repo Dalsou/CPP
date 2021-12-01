@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:46:45 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/07/07 17:09:18 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:42:20 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,31 @@ int	findLevel(std::string level_str, std::string Level[4])
 int main(int argc, char **argv)
 {
 	Karen		karen;
-	std::string	level_str = argv[1];
+	std::string	level_str;
 	std::string	Level[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int			i;
 
-	if (argc != 2) {
+	if (argc != 2)
+	{
 		std::cout << "Wrong number of arguments.\n";
 		return (1);
 	}
+	level_str = argv[1];
 	i = findLevel(level_str, Level);
 	switch (i) {
 		case (0) :
-			std::cout << "[ DEBUG ]\n";
-			karen.complain(Level[i]);
-			break;
+			karen.complain("DEBUG");
+			std::cout << std::endl;
 		case (1) :
-			std::cout << "[ INFO ]\n";
-			karen.complain(Level[i]);
-			break;
+			karen.complain("INFO");
+			std::cout << std::endl;
 		case (2) :
-			std::cout << "[ WARNING ]\n";
-			karen.complain(Level[i]);
-			break;
+			karen.complain("WARNING");
+			std::cout << std::endl;
 		case (3) :
-			std::cout << "[ ERROR ]\n";
-			karen.complain(Level[i]);
+			karen.complain("ERROR");
 			break;
 		default :
-			std::cout << "[ Probablement plainte de problèmes insignifiants ]\n";
+			std::cout << "[ Probably complaining about insignificant problems ]\n";
 	}
 }
