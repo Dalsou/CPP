@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:33:46 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/09/28 12:05:20 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/01 18:19:22 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int		main()
 {
+	// const Animal* proof = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 

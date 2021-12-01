@@ -6,7 +6,7 @@
 #    By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 15:21:37 by afoulqui          #+#    #+#              #
-#    Updated: 2021/09/28 12:00:02 by afoulqui         ###   ########.fr        #
+#    Updated: 2021/12/01 15:43:53 by afoulqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 CC		=	clang++
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 # ----------------- #
 #     FUNCTIONS     #
