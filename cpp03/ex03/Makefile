@@ -6,7 +6,7 @@
 #    By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 12:15:34 by afoulqui          #+#    #+#              #
-#    Updated: 2021/08/12 18:26:05 by afoulqui         ###   ########.fr        #
+#    Updated: 2021/12/01 12:44:50 by afoulqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ NAME	=	a.out
 SRCS	=	main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
-			FragTrap.cpp
+			FragTrap.cpp \
+			DiamondTrap.cpp
 
 OBJ_DIR	=	objs/
 OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
