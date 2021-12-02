@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:23:41 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/12 16:59:37 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:19:41 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 // Constructors & Destructor
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(150) {}
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(std::string newName, int newGrade) :
-name(newName),
-grade(newGrade)
+Bureaucrat::Bureaucrat(std::string name, int grade) :
+_name(name),
+_grade(grade)
 {
-	if (grade < 1)
+	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (grade > 150)
+	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) :
-name(copy.name),
-grade(copy.grade) 
-{
-	if (grade < 1)
+_name(copy._name),
+_grade(copy._grade)
+{ 
+	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (grade > 150)
+	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
 
@@ -42,7 +42,7 @@ grade(copy.grade)
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& op)
 {
-	this->grade = op.grade;
+	this->_grade = op._grade;
 	return (*this);
 }
 
@@ -55,11 +55,11 @@ std::ostream&	operator<<(std::ostream &out, const Bureaucrat& i)
 // Getter Functions
 
 const std::string &	Bureaucrat::getName() const {
-	return (this->name);
+	return (this->_name);
 }
 
 int	Bureaucrat::getGrade() const {
-	return (this->grade);
+	return (this->_grade);
 }
 
 // Exceptions
@@ -75,24 +75,25 @@ char const *Bureaucrat::GradeTooLowException::what() const throw() {
 // Functions
 
 void	Bureaucrat::incrementGrade() {
-	if (this->grade - 1 < 1)
+
+	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
-		this->grade--;
+		this->_grade--;
 }
 
 void	Bureaucrat::decrementGrade() {
-	if (this->grade + 1 > 150)
+	if (this->_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
-		this->grade++;
+		this->_grade++;
 }
 
 void	Bureaucrat::signedForm(Form& form) const {
-	if (form.isSigned())
-		std::cout << form.getName() << " : already signed\n";
+	if (form.isSigned() == "yes")
+		std::cout << form.getName() << " : " << this->_name << " cannot sign because the form is already signed\n";
 	else if (this->getGrade() > form.getGradeToSign())
-		std::cout << form.getName() << " : grade is too low to signed\n";
+		std::cout << form.getName() << " : " << this->_name << "'s " << "grade is too low to signed\n";
 	else
 	{
 		form.beSigned(*this);

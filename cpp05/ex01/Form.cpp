@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:21:32 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/12 16:59:59 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 13:24:35 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ int	Form::getGradeToExecute() const {
 	return (this->_gradeToExecute);
 }
 
-bool	Form::isSigned() const {
-	return (this->_signed);
+std::string	Form::isSigned() const {
+	if (this->_signed == true)
+		return ("yes");
+	return ("no");
 }
 
 // Exceptions

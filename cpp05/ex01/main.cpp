@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:43:17 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/12 17:00:48 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:13:08 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,35 @@
 
 int	main()
 {
-	Bureaucrat b1("Fabien", 1);
-	Bureaucrat b2("Corentin", 150);
+	Bureaucrat fabien("Fabien", 1);
+	Bureaucrat corentin("Corentin", 150);
 	
-	std::cout << b1;
-	std::cout << b2;
+	std::cout << fabien;
+	std::cout << corentin;
 
 	std::cout << "\n*** Exception ***\n";
 
 	try {
-		b1.incrementGrade();
+		fabien.incrementGrade();
 	}
-
 	catch (std::exception& ex) {
 		std::cerr << ex.what() << std::endl;
 	}
 
 	try {
-		b2.decrementGrade();
+		corentin.decrementGrade();
 	}
-
 	catch (std::exception& ex) {
 		std::cerr << ex.what() << std::endl;
 	}
 
-	std::cout << b1;
-	std::cout << b2;
+	std::cout << fabien;
+	std::cout << corentin;
 
 	std::cout << "\n*** Decrement & Increment ***\n";
 
 	try {
-		b1.decrementGrade();
+		fabien.decrementGrade();
 	}
 
 	catch (std::exception& ex) {
@@ -53,15 +51,15 @@ int	main()
 	}
 
 	try {
-		b2.incrementGrade();
+		corentin.incrementGrade();
 	}
 
 	catch (std::exception& ex) {
 		std::cerr << ex.what() << std::endl;
 	}
 
-	std::cout << b1;
-	std::cout << b2;
+	std::cout << fabien;
+	std::cout << corentin;
 
 	std::cout << "\n*** Form ***\n\n";
 
@@ -74,22 +72,40 @@ int	main()
 	std::cout << std::endl;
 
 	try {
-		b1.signedForm(f1);
+		fabien.signedForm(f1);
 	}
 	catch (std::exception& ex) {
 		std::cerr << ex.what() << std::endl;
 	}
 
 	try {
-		b2.signedForm(f2);
+		fabien.signedForm(f1);
 	}
-
 	catch (std::exception& ex) {
 		std::cerr << ex.what() << std::endl;
 	}
 
-	std::cout << std::endl;
-	std::cout << f1;
-	std::cout << std::endl;
+	try {
+		corentin.signedForm(f2);
+	}
+	catch (std::exception& ex) {
+		std::cerr << ex.what() << std::endl;
+	}
+
+	try {
+		fabien.signedForm(f2);
+	}
+	catch (std::exception& ex) {
+		std::cerr << ex.what() << std::endl;
+	}
+
+	try {
+		fabien.signedForm(f2);
+	}
+	catch (std::exception& ex) {
+		std::cerr << ex.what() << std::endl;
+	}
+
+	std::cout << std::endl << f1 << std::endl;
 	std::cout << f2;
 }
