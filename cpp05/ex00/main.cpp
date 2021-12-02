@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:43:17 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/12/02 11:34:37 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:04:49 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,15 @@ int	main()
 	try {
 		fabien.incrementGrade();
 	}
-
-	catch (std::exception& ex) {
-		std::cerr << ex.what() << std::endl;
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
 
 	try {
 		corentin.decrementGrade();
 	}
-
-	catch (std::exception& ex) {
-		std::cerr << ex.what() << std::endl;
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << fabien;
