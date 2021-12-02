@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:23:41 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/12/02 10:40:47 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:28:04 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,37 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) :
-_name(name),
-_grade(grade)
+_name(name)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (grade > 150)
+	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) :
-_name(copy._name),
-_grade(copy._grade) 
+_name(copy._name)
 {
-	if (this->_grade < 1)
+	if (copy._grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (this->_grade > 150)
+	else if (copy._grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade = copy._grade;
 }
 
 // Operators
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& op)
 {
-	this->_grade = op._grade;
+	if (op._grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (op._grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade = op._grade;
 	return (*this);
 }
 

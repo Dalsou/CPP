@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:43:17 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/12/02 10:26:24 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:34:37 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	main()
 {
+	//Bureaucrat proof1("Proof1", 0);
+	//Bureaucrat proof2("Proof2", 151);
 	Bureaucrat fabien("Fabien", 1);
 	Bureaucrat corentin("Corentin", 150);
 	
