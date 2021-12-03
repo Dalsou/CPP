@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:21:32 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/13 11:17:46 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:43:45 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,5 @@ void	Form::execute(Bureaucrat const & executor) const {
 		throw Form::GradeTooLowException();
 	if (this->_signed == false)
 		throw Form::FormNotSignedException();
-	std::cout << executor.getName() << " execute " << this->_name << std::endl;
+	std::cout << executor.getName() << " executes " << this->_name << std::endl;
 }

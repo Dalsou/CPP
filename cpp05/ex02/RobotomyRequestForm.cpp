@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:40:43 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/12 18:33:49 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:33:58 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 
 	Form::execute(executor);
 	std::cout << "BRRRRR ... BRRRRRR ... BRRRR ...\n";
-	i = rand();
-	if (i % 2)
+	i = rand() % 2;
+	if (i == 0)
 		std::cout << this->_target << " has been robotomized successfully\n";
 	else
 		std::cout << this->_target << " has not been robotomized\n";

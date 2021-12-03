@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:23:41 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/13 11:11:40 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:44:15 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,5 @@ void	Bureaucrat::executeForm(const Form& form)
 	else if (form.getGradeToExecute() < this->grade)
 		std::cout << this->name << " cannot execute " << form.getName() << " because his grade is too low\n";
 	else
-	{
-		std::cout << this->name << " executes " << form.getName() << std::endl;
 		form.execute(*this);
-	}
 }
