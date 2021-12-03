@@ -6,7 +6,7 @@
 /*   By: afoulqui <afoulqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:38:29 by afoulqui          #+#    #+#             */
-/*   Updated: 2021/10/12 17:46:45 by afoulqui         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:45:11 by afoulqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
+#include <stdlib.h>
 #include "Form.hpp"
 
 class RobotomyRequestForm : public Form {
